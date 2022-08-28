@@ -1,0 +1,7 @@
+{
+  "name": "teknoclarity",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
