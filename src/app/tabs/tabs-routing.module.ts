@@ -8,27 +8,39 @@ const routes: Routes = [
     component: TabsPage,
     children: [
       {
-        path: 'tab1',
-        loadChildren: () => import('../tab1/tab1.module').then(m => m.Tab1PageModule)
+        path: 'beranda',
+        loadChildren: () => import('../beranda/beranda.module').then(m => m.BerandaPageModule)
       },
       {
-        path: 'tab2',
-        loadChildren: () => import('../tab2/tab2.module').then(m => m.Tab2PageModule)
+        path: 'kontak',
+        loadChildren: () => import('../kontak/kontak.module').then(m => m.KontakPageModule)
       },
       {
-        path: 'tab3',
-        loadChildren: () => import('../tab3/tab3.module').then(m => m.Tab3PageModule)
+        path: 'tentang',
+        loadChildren: () => import('../tentang/tentang.module').then(m => m.TentangPageModule)
       },
+      {
+        path: 'kategori',
+        loadChildren: () => import('../kategori/kategori.module').then(m => m.KategoriPageModule)
+      },
+      {
+        path: 'detail/:id',
+        loadChildren: () => import('../detail/detail.module').then(m => m.DetailPageModule)
+      },     
+      {
+        path: 'konten-kategori/:categories',
+        loadChildren: () => import('../konten-by-kategori/konten-by-kategori.module').then(m => m.KontenByKategoriPageModule)
+      },      
       {
         path: '',
-        redirectTo: '/tabs/tab1',
+        redirectTo: '/tabs/beranda',
         pathMatch: 'full'
       }
     ]
   },
   {
     path: '',
-    redirectTo: '/tabs/tab1',
+    redirectTo: '/tabs/beranda',
     pathMatch: 'full'
   }
 ];

@@ -1,0 +1,26 @@
+<ion-header class="ion-no-border">
+  <ion-row class="ion-justify-content-between ion-align-items-center">
+    <ion-back-button defaultHref="/tabs/beranda"></ion-back-button>
+    <ion-col>
+      <div class="logo ion-text-center">
+        <ion-img class="img-logo" src="/assets/icon/logo.png"></ion-img>
+        <ion-label>
+          Tekno Clarity
+        </ion-label>
+      </div>
+    </ion-col>
+  </ion-row>
+</ion-header>
+<ion-content>
+  <ion-card>
+    <ion-card-header>
+      <img class="kontak_thumbnail" src="https://teknoclarity.com/wp-content/uploads/2022/05/YT-150x150.png">
+    </ion-card-header>
+    <ion-card-content>
+      <h1 class="ion-padding ion-text-center">Kategori Artikel :</h1>
+    <ion-button [routerLink]="['/tabs/', 'konten-kategori', kategori.id]" expand="block" class="" *ngFor="let kategori of Kategori">
+      <p>{{kategori.name}}</p>
+    </ion-button>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

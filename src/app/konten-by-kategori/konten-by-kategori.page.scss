@@ -1,0 +1,39 @@
+ion-header{
+    padding : 10px;
+    background: var(--ion-color-green-soft);
+    .logo{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .img-logo{
+            margin: 0 5px;
+            width: 2rem;
+        }
+    }
+
+    p{
+        margin: 0;
+    }
+
+    .kota{
+        color: rgb(255, 0, 0);
+        font-weight: bold;
+    }
+    .tanggal{
+        color: rgb(16, 1, 118);
+        font-weight: bold;
+        font-size: 12px;
+    }
+    .tanggal-check{
+        text-align: right;
+    }
+    .refresh-tanggal{
+        padding-left: 0;
+        margin: 0;
+    }
+
+    ion-icon{
+        font-size: 24px;
+    }
+}

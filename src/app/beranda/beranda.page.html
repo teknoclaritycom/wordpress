@@ -1,0 +1,112 @@
+<ion-header class="ion-no-border">
+  <ion-row class="ion-justify-content-between ion-align-items-center">
+    <div class="logo">
+      <ion-img class="img-logo" src="/assets/icon/logo.png"></ion-img>
+      <ion-label>
+        Tekno Clarity
+      </ion-label>
+    </div>
+    <ion-col>
+      <ion-row class="ion-align-items-center">
+        <ion-col class="tanggal-check" size="10">
+          <p class="kota">Belajar Teknologi</p>
+          <p class="tanggal">Jauh Lebih Jelas</p>
+        </ion-col>
+        <ion-col class="refresh-tanggal" size="2">
+          <ion-icon name="rocket-sharp"></ion-icon>
+        </ion-col>
+      </ion-row>
+    </ion-col>
+  </ion-row>
+</ion-header>
+
+<ion-content>
+  <div class="ion-padding-start">
+    <ion-row>
+      <ion-col>
+        <p class="ion-padding-top heading_type">Artikel Bisnis :</p>
+      </ion-col>
+      <ion-col></ion-col>
+      <ion-col>
+        <p class="ion-padding-top heading_type" [routerLink]="['/tabs/', 'konten-kategori', 25]" style="color: blue ;">Selengkapnya</p>
+      </ion-col>
+    </ion-row>
+  </div>
+
+  <ion-slides [options]="options" class="ion-padding-start ion-padding-top">
+    <ion-slide *ngFor="let bisnis of Bisnis">      
+      <div class="jadwal ion-text-start">
+        <p><img [routerLink]="['/tabs/', 'detail', bisnis.id]" style="width: 100%;height: 100px;border-radius: 5px;" src="{{bisnis._embedded['wp:featuredmedia'][0].media_details.sizes.thumbnail.source_url}}"></p>
+        <p [routerLink]="['/tabs/', 'detail', bisnis.id]" [innerHTML]="bisnis.title.rendered"></p>
+        <span>{{bisnis.date | date}}</span>
+      </div>
+    </ion-slide>
+  </ion-slides>
+
+  <div>
+    <ion-row>
+      <p class="ion-padding-start ion-padding-top heading_type">Kategori Lainnya :</p>
+    </ion-row>
+  </div>
+
+  <ion-row class="ion-justify-content-between">
+    <ion-col>
+      <ion-button [routerLink]="['/tabs/', 'konten-kategori', 14]" expand="block" class="button-block button-solid"><ion-icon name="book-outline"></ion-icon><p class="cat_name"> Blogging</p></ion-button> 
+    </ion-col>
+    <ion-col>
+      <ion-button [routerLink]="['/tabs/', 'konten-kategori', 36]" expand="block" class="button-block button-solid"><ion-icon name="code-slash-outline"></ion-icon><p class="cat_name"> Programming</p></ion-button>
+    </ion-col>
+    <ion-col>
+      <ion-button [routerLink]="['/tabs/', 'konten-kategori', 3]" expand="block" class="button-block button-solid"><ion-icon name="card-outline"></ion-icon><p class="cat_name"> Keuangan</p></ion-button>
+    </ion-col>
+    <ion-col>
+      <ion-button [routerLink]="['/tabs/', 'konten-kategori', 60]" expand="block" class="button-block button-solid"><ion-icon name="information-circle-outline"></ion-icon><p class="cat_name"> Info Umum</p></ion-button>
+    </ion-col>
+  </ion-row>
+
+  <ion-row>
+    <ion-col>
+      <ion-button expand="block" [routerLink]="['/tabs/', 'kategori']" class="button-block button-solid"><ion-icon name="apps-outline"></ion-icon><p class="cat_name"> Lihat Semua</p></ion-button>
+    </ion-col>
+  </ion-row>
+
+  <div class="ion-padding-start">
+    <ion-row>
+      <ion-col>
+        <p class="ion-padding-top heading_type">Artikel Sosmed :</p>
+      </ion-col>
+      <ion-col></ion-col>
+      <ion-col>
+        <p class="ion-padding-top heading_type" [routerLink]="['/tabs/', 'konten-kategori', 11]" style="color: blue ;">Selengkapnya</p>
+      </ion-col>
+    </ion-row>
+  </div>
+
+  <ion-slides [options]="options" class="ion-padding-start ion-padding-top">
+    <ion-slide *ngFor="let sosmed of Sosmed">      
+      <div class="jadwal ion-text-start">
+        <p><img [routerLink]="['/tabs/', 'detail', sosmed.id]"  style="width: 100%;height: 100px;border-radius: 5px;" src="{{sosmed._embedded['wp:featuredmedia'][0].media_details.sizes.thumbnail.source_url}}"></p>
+        <p [routerLink]="['/tabs/', 'detail', sosmed.id]"  [innerHTML]="sosmed.title.rendered"></p>
+        <span>{{sosmed.date | date}}</span>
+      </div>
+    </ion-slide>
+  </ion-slides>
+
+  <div class="ion-padding-start">
+    <p class="heading_typer">Artikel Terbaru :</p>
+  </div>
+  <ion-card *ngFor="let post of Posts">
+    <ion-card-header>
+      <p><img style="width: 100%;height: 100px;" src="{{post._embedded['wp:featuredmedia'][0].media_details.sizes.thumbnail.source_url}}"></p>
+      <ion-card-title [innerHTML]="post.title.rendered"></ion-card-title>
+      <ion-card-subtitle>{{ post.date | date }}</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-button expand="full" fill="clear" [routerLink]="['/tabs/', 'detail', post.id]">Baca Selengkapnya</ion-button>
+    </ion-card-content>
+  </ion-card>
+  <ion-infinite-scroll threshold="120px" (ionInfinite)="infiniteLoad($event)">
+    <ion-infinite-scroll-content loadingText="Memuat Artikel...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>
